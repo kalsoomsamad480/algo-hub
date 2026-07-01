@@ -28,9 +28,11 @@ st.write("Enter the key details of a house below to get an estimated sale price.
 # ----------------------------------------------------------------
 @st.cache_resource
 def load_artifacts():
-    model = joblib.load("best_model.pkl")
-    model_columns = joblib.load("model_columns.pkl")
-    sample_row = joblib.load("sample_row.pkl")
+    import os
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    model = joblib.load(os.path.join(base_dir, "best_model.pkl"))
+    model_columns = joblib.load(os.path.join(base_dir, "model_columns.pkl"))
+    sample_row = joblib.load(os.path.join(base_dir, "sample_row.pkl"))
     return model, model_columns, sample_row
 
 try:
