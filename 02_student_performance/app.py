@@ -21,7 +21,13 @@ import numpy as np
 import joblib
 import os
 
-MODELS_DIR = "models"
+import pathlib
+
+# Build the path relative to THIS script's location, not the working directory.
+# This makes it work the same whether you run it locally or on Streamlit Cloud,
+# where the working directory is always the repo root, not this file's folder.
+BASE_DIR = pathlib.Path(__file__).parent
+MODELS_DIR = str(BASE_DIR / "models")
 
 st.set_page_config(page_title="Student Performance Prediction", page_icon="🎓", layout="wide")
 
